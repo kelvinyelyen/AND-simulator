@@ -22,6 +22,36 @@ const curriculum = [
     title: "LIF Synthesis",
     subtitle: "Simulating the First Artificial Neuron",
   },
+  {
+    slug: "/labs/phase-space",
+    title: "Phase Space Biophysics",
+    subtitle: "The Geometry of the Spike",
+  },
+  {
+    slug: "/labs/hodgkin-huxley",
+    title: "The Hodgkin-Huxley Engine",
+    subtitle: "Ion Channel Conductance",
+  },
+  {
+    slug: "/labs/synapse",
+    title: "Synaptic Mechanics",
+    subtitle: "Chemical Transmission",
+  },
+  {
+    slug: "/labs/stdp",
+    title: "STDP & Hebbian Learning",
+    subtitle: "Temporal Causality",
+  },
+  {
+    slug: "/labs/population",
+    title: "Population Feedback",
+    subtitle: "E-I Dynamics",
+  },
+  {
+    slug: "/labs/decoding",
+    title: "Neural Decoding",
+    subtitle: "Tuning Curves & Information Theory",
+  },
 ];
 
 export default function Home() {
