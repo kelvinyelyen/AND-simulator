@@ -24,7 +24,7 @@ export default function PhasePlanePage() {
     const [mode, setMode] = useState<Mode>('leak');
     const [paramI, setParamI] = useState(0.5); // Input Current (I)
     const [tau, setTau] = useState(1.0);       // Time Constant (tau)
-    
+
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [mousePos, setMousePos] = useState<{ x: number, y: number } | null>(null);
     const [liveState, setLiveState] = useState<{ x: number, y: number, dx: number, dy: number } | null>(null);
@@ -38,8 +38,8 @@ export default function PhasePlanePage() {
         switch (m) {
             case 'leak':
                 // 1st Order ODE: dV/dt = -(V - I)
-                return { dx: -(x - p), dy: -y }; 
-            
+                return { dx: -(x - p), dy: -y };
+
             case 'time-constant':
                 // Visualizing Memory: dV/dt = (-V + I) / tau
                 return { dx: (-(x - p)) / t, dy: -y / t };
@@ -52,7 +52,7 @@ export default function PhasePlanePage() {
                 // FitzHugh-Nagumo
                 return {
                     dx: x - (x * x * x) / 3 - y + p,
-                    dy: 0.08 * (x + a - b * y) 
+                    dy: 0.08 * (x + a - b * y)
                 };
             default:
                 return { dx: 0, dy: 0 };
@@ -106,7 +106,7 @@ export default function PhasePlanePage() {
             for (let y = -4; y <= 4; y += 0.5) {
                 const { dx, dy } = getDerivatives(x, y, paramI, mode, tau);
                 const speed = Math.sqrt(dx * dx + dy * dy);
-                const arrowScale = 0.25 / (speed + 0.5); 
+                const arrowScale = 0.25 / (speed + 0.5);
                 const start = toCanvas(x, y);
                 const end = toCanvas(x + dx * arrowScale, y + dy * arrowScale);
 
@@ -117,7 +117,7 @@ export default function PhasePlanePage() {
                 ctx.moveTo(start.x, start.y);
                 ctx.lineTo(end.x, end.y);
                 ctx.stroke();
-                
+
                 ctx.beginPath();
                 ctx.arc(end.x, end.y, 1, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(113, 113, 122, ${opacity + 0.2})`;
@@ -129,7 +129,7 @@ export default function PhasePlanePage() {
         ctx.lineWidth = 2.5;
 
         if (mode === 'leak' || mode === 'time-constant') {
-            ctx.strokeStyle = "#10b981"; 
+            ctx.strokeStyle = "#10b981";
             ctx.setLineDash([5, 5]);
             ctx.beginPath();
             const xTarget = toCanvas(paramI, 0).x;
@@ -149,11 +149,11 @@ export default function PhasePlanePage() {
             ctx.fill();
 
         } else if (mode === 'fixed-points') {
-             ctx.strokeStyle = "#3b82f6";
-             ctx.beginPath();
-             ctx.moveTo(toCanvas(-6, 0).x, toCanvas(-6, 0).y);
-             ctx.lineTo(toCanvas(6, 0).x, toCanvas(6, 0).y);
-             ctx.stroke();
+            ctx.strokeStyle = "#3b82f6";
+            ctx.beginPath();
+            ctx.moveTo(toCanvas(-6, 0).x, toCanvas(-6, 0).y);
+            ctx.lineTo(toCanvas(6, 0).x, toCanvas(6, 0).y);
+            ctx.stroke();
         } else if (mode === 'spike') {
             ctx.strokeStyle = "#10b981";
             ctx.beginPath();
@@ -184,7 +184,7 @@ export default function PhasePlanePage() {
             ctx.beginPath();
             let cur = { ...start };
             ctx.moveTo(mousePos.x, mousePos.y);
-            
+
             for (let i = 0; i < 500; i++) {
                 cur = rk4Step(cur.x, cur.y, paramI, mode, tau, 0.03);
                 const p = toCanvas(cur.x, cur.y);
@@ -244,7 +244,7 @@ export default function PhasePlanePage() {
 
     return (
         <div className="h-screen bg-zinc-950 text-zinc-200 flex flex-col overflow-hidden select-none font-sans">
-            
+
             {/* MOBILE GUARD */}
             <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
                 <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
@@ -265,7 +265,7 @@ export default function PhasePlanePage() {
                     <div className="flex items-center gap-4">
                         <Compass className={cn("w-5 h-5", mode === 'spike' ? "text-emerald-500" : "text-blue-500")} />
                         <h1 className="text-base font-semibold tracking-tight text-white">
-                            <Link href="/" className="hover:opacity-80 transition-opacity">ISCN</Link>
+                            <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
                             <span className="mx-3 text-zinc-700">/</span>
                             <span className="text-zinc-400 font-medium">Neural Dynamics</span>
                         </h1>
@@ -288,12 +288,12 @@ export default function PhasePlanePage() {
                 </header>
 
                 <main className="flex-1 flex overflow-hidden p-6 gap-6 items-start">
-                    
+
                     {/* Sidebar: h-fit, max-h-full, and sticky behavior if needed */}
                     <aside className="w-80 flex flex-col shrink-0 overflow-hidden bg-zinc-900/50 border border-zinc-800 rounded-2xl shadow-sm h-fit max-h-full">
-                        
+
                         <div className="flex flex-col p-6 overflow-y-auto [&::-webkit-scrollbar]:hidden">
-                            
+
                             {/* 1. TOP: Equation */}
                             <div className="space-y-6 shrink-0">
                                 <div className="space-y-4">
@@ -309,7 +309,7 @@ export default function PhasePlanePage() {
 
                             {/* 2. MIDDLE: Controls */}
                             <div className="flex-col space-y-8 py-6">
-                                
+
                                 {/* Parameter Section */}
                                 <div className="space-y-4 pt-6 border-t border-zinc-800/50">
                                     <div className="space-y-1">
@@ -317,7 +317,7 @@ export default function PhasePlanePage() {
                                             <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">System Parameters</span>
                                         </div>
                                         <p className="text-[10px] text-zinc-500 leading-tight">
-                                            {labels.desc} 
+                                            {labels.desc}
                                         </p>
                                     </div>
 
@@ -370,7 +370,7 @@ export default function PhasePlanePage() {
                                 onMouseLeave={() => setMousePos(null)}
                                 className="w-full h-full"
                             />
-                            
+
                             {/* FLOATING PROBE HUD - Top Right Corner */}
                             <div className="absolute top-4 right-4 pointer-events-none">
                                 <div className={cn(
@@ -385,10 +385,10 @@ export default function PhasePlanePage() {
                                         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs font-mono">
                                             <div className="text-zinc-500">x (V):</div>
                                             <div className="text-zinc-200 text-right">{liveState.x.toFixed(2)}</div>
-                                            
+
                                             <div className="text-zinc-500">y (w):</div>
                                             <div className="text-zinc-200 text-right">{liveState.y.toFixed(2)}</div>
-                                            
+
                                             <div className="col-span-2 pt-2 mt-1 border-t border-zinc-800/50 text-center text-zinc-400">
                                                 <InlineMath math={`\\dot{\\vec{x}} = [${liveState.dx.toFixed(2)}, ${liveState.dy.toFixed(2)}]`} />
                                             </div>

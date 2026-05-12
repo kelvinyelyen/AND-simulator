@@ -146,7 +146,7 @@ export default function LifLab() {
           <div className="flex items-center gap-4">
             <Activity className="w-5 h-5 text-emerald-500" />
             <h1 className="text-base font-semibold tracking-tight text-white">
-              <Link href="/" className="hover:opacity-80 transition-opacity">ISCN</Link>
+              <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
               <span className="mx-3 text-zinc-700">/</span>
               <span className="text-zinc-400 font-medium">LIF Synthesis</span>
             </h1>

@@ -92,7 +92,7 @@ export default function PhaseSpaceLab() {
           <div className="flex items-center gap-4">
             <Activity className="w-5 h-5 text-emerald-500" />
             <h1 className="text-base font-semibold tracking-tight text-white">
-              <Link href="/" className="hover:opacity-80 transition-opacity">ISCN</Link>
+              <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
               <span className="mx-3 text-zinc-700">/</span>
               <span className="text-zinc-400 font-medium">Phase Space Biophysics</span>
             </h1>
@@ -114,7 +114,7 @@ export default function PhaseSpaceLab() {
           {/* Left Panel: Sidebar */}
           <aside className="w-[400px] flex flex-col shrink-0 overflow-hidden bg-zinc-900/50 border border-zinc-800 rounded-2xl shadow-sm">
             <div className="h-full flex flex-col p-6 overflow-y-auto [&::-webkit-scrollbar]:hidden">
-              
+
               {/* Equations */}
               <div className="space-y-6">
                 <div className="space-y-4">
@@ -123,13 +123,13 @@ export default function PhaseSpaceLab() {
                     <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">FitzHugh-Nagumo Model</span>
                   </div>
                   <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center justify-center border border-zinc-800/30 text-zinc-200 gap-2">
-                    <div 
+                    <div
                       className={cn("p-2 rounded transition-colors w-full flex justify-center", hoveredTerm === 'dv' ? 'bg-emerald-950/30 text-emerald-400' : '')}
                       onMouseEnter={() => setHoveredTerm('dv')} onMouseLeave={() => setHoveredTerm(null)}
                     >
                       <BlockMath math="\frac{dv}{dt} = v - \frac{v^3}{3} - w + I_{ext}" />
                     </div>
-                    <div 
+                    <div
                       className={cn("p-2 rounded transition-colors w-full flex justify-center", hoveredTerm === 'dw' ? 'bg-blue-950/30 text-blue-400' : '')}
                       onMouseEnter={() => setHoveredTerm('dw')} onMouseLeave={() => setHoveredTerm(null)}
                     >
@@ -179,7 +179,7 @@ export default function PhaseSpaceLab() {
                     />
                     <span className="text-zinc-300 font-bold w-12 text-right tabular-nums">{params.b.toFixed(2)}</span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center text-xs font-mono bg-zinc-950/50 p-2 rounded border border-zinc-800/50 gap-3">
                     <span className="text-zinc-400 w-24 shrink-0">Time (τ)</span>
                     <Slider
@@ -213,19 +213,19 @@ export default function PhaseSpaceLab() {
               <ResponsiveContainer width="100%" height="100%">
                 <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#1f1f22" />
-                  <XAxis type="number" dataKey="v" domain={[-2.5, 2.5]} name="Voltage" tick={{fill: '#52525b', fontSize: 10}} />
-                  <YAxis type="number" dataKey="w" domain={[-1, 2]} name="Recovery" tick={{fill: '#52525b', fontSize: 10}} />
+                  <XAxis type="number" dataKey="v" domain={[-2.5, 2.5]} name="Voltage" tick={{ fill: '#52525b', fontSize: 10 }} />
+                  <YAxis type="number" dataKey="w" domain={[-1, 2]} name="Recovery" tick={{ fill: '#52525b', fontSize: 10 }} />
                   <ZAxis range={[10, 10]} />
-                  
+
                   {/* Nullclines plotted as lines */}
                   <Scatter data={vNullcline} fill="#10b981" line={{ stroke: '#10b981', strokeWidth: 2 }} shape={() => <></>} />
                   <Scatter data={wNullcline} fill="#3b82f6" line={{ stroke: '#3b82f6', strokeWidth: 2 }} shape={() => <></>} />
-                  
+
                   {/* Trajectory */}
                   <Scatter data={phaseData} fill="#ffffff" line={{ stroke: '#ffffff', strokeWidth: 2 }} shape={() => <></>} />
-                  
+
                   {/* Current State Point */}
-                  <Scatter data={[{v, w}]} fill="#ef4444" shape="circle" />
+                  <Scatter data={[{ v, w }]} fill="#ef4444" shape="circle" />
                 </ScatterChart>
               </ResponsiveContainer>
             </div>

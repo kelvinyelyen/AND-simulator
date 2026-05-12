@@ -377,7 +377,7 @@ export default function SyllabusPage() {
       {/* Footer */}
       <footer className="border-t border-zinc-900 mt-24">
         <div className="max-w-4xl mx-auto px-8 py-8 flex items-center justify-between">
-          <span className="text-[10px] text-zinc-700">ISCN — In Silico Computational Neuroscience</span>
+          <span className="text-[10px] text-zinc-700">AND — Applied Neural Dynamics</span>
           <Link href="/" className="text-[10px] text-zinc-600 hover:text-emerald-400 transition-colors">
             ← Back to Labs
           </Link>

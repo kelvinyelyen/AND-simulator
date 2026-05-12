@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "ISCN | Interactive Simulations",
-  description: "Interactive Simulations for Computational Neuroscience",
+  title: "AND Simulator",
+  description: "Using from-scratch simulations to explore everything from single-cell differential equations to population dynamics.",
 };
 
 export default function RootLayout({

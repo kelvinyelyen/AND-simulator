@@ -21,15 +21,15 @@ type Mode = 'coin' | 'poisson';
 
 export default function ProbabilityPage() {
     const [mode, setMode] = useState<Mode>('poisson');
-    const [rate, setRate] = useState(0.5); 
+    const [rate, setRate] = useState(0.5);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const coinHistoryRef = useRef<number[]>([]);
     const spikeTimesRef = useRef<number[]>([]);
-    
+
     const [stats, setStats] = useState({
         coinCounts: { heads: 0, total: 0 },
-        spikeCount: 0 
+        spikeCount: 0
     });
     const lastUiUpdateRef = useRef(0);
 
@@ -100,7 +100,7 @@ export default function ProbabilityPage() {
             const height = rect.height;
 
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = "#09090b"; 
+            ctx.fillStyle = "#09090b";
             ctx.fillRect(0, 0, width, height);
 
             ctx.font = "12px ui-monospace, monospace";
@@ -119,7 +119,7 @@ export default function ProbabilityPage() {
 
                 history.forEach((outcome, i) => {
                     const ageIndex = (history.length - 1) - i;
-                    const x = width - (ageIndex * 15); 
+                    const x = width - (ageIndex * 15);
                     if (x < 0) return;
                     ctx.beginPath();
                     ctx.arc(x, 60, 5, 0, Math.PI * 2);
@@ -134,7 +134,7 @@ export default function ProbabilityPage() {
                 ctx.fillStyle = "#ef4444";
                 const hTails = ((total - heads) / total) * maxH;
                 ctx.fillRect(width * 0.25 - barW / 2, bottomY - hTails, barW, hTails);
-                
+
                 ctx.fillStyle = "#10b981";
                 const hHeads = (heads / total) * maxH;
                 ctx.fillRect(width * 0.75 - barW / 2, bottomY - hHeads, barW, hHeads);
@@ -152,24 +152,24 @@ export default function ProbabilityPage() {
                 ctx.stroke();
                 ctx.setLineDash([]);
             } else {
-                const realRate = 5 + (rate * 45); 
+                const realRate = 5 + (rate * 45);
                 if (Math.random() < realRate * dt) {
                     spikeTimesRef.current.push(now);
                     spikeTimesRef.current = spikeTimesRef.current.filter(t => t >= now - 5.0);
                 }
 
                 const spikes = spikeTimesRef.current;
-                const paddingX = 60; 
+                const paddingX = 60;
                 const histBottom = height - 90;
                 const histH = 180; // Increased histogram height
                 const histW = width - (paddingX * 2);
 
                 // Raster Plot: Edge to Edge
-                ctx.strokeStyle = "#a855f7"; 
+                ctx.strokeStyle = "#a855f7";
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
                 spikes.forEach(t => {
-                    const x = width - ((now - t) * (width / 5)); 
+                    const x = width - ((now - t) * (width / 5));
                     if (x >= 0 && x <= width) {
                         ctx.moveTo(x, 40);
                         ctx.lineTo(x, 80);
@@ -181,7 +181,7 @@ export default function ProbabilityPage() {
                 ctx.strokeStyle = "#27272a";
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
-                ctx.moveTo(paddingX, histBottom - histH); 
+                ctx.moveTo(paddingX, histBottom - histH);
                 ctx.lineTo(paddingX, histBottom);
                 ctx.lineTo(paddingX + histW, histBottom);
                 ctx.stroke();
@@ -221,10 +221,10 @@ export default function ProbabilityPage() {
                     ctx.fillStyle = "#52525b";
                     ctx.textAlign = "left";
                     ctx.fillText("0ms", paddingX, histBottom + 20);
-                    
+
                     ctx.textAlign = "right";
                     ctx.fillText("250ms", paddingX + histW, histBottom + 20);
-                    
+
                     ctx.save();
                     ctx.translate(paddingX - 40, histBottom - (histH / 2));
                     ctx.rotate(-Math.PI / 2);
@@ -262,7 +262,7 @@ export default function ProbabilityPage() {
 
     return (
         <div className="h-screen bg-zinc-950 text-zinc-200 flex flex-col overflow-hidden select-none font-sans">
-            
+
             {/* MOBILE GUARD - Added here */}
             <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
                 <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
@@ -282,7 +282,7 @@ export default function ProbabilityPage() {
                     <div className="flex items-center gap-4">
                         <Activity className={cn("w-5 h-5", mode === 'coin' ? "text-emerald-500" : "text-purple-500")} />
                         <h1 className="text-base font-semibold tracking-tight text-white">
-                            <Link href="/" className="hover:opacity-80 transition-opacity">ISCN</Link>
+                            <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
                             <span className="mx-3 text-zinc-700">/</span>
                             <span className="text-zinc-400 font-medium">Neural Stochasticity</span>
                         </h1>
