@@ -115,7 +115,7 @@ export default function Home() {
       <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-8 py-5 flex items-center justify-between">
           <div>
-            <h1 className="text-sm font-bold tracking-tight text-white">Applied Neural Dynamics</h1>
+            <h1 className="text-sm font-bold tracking-tight text-white">Applied Neural Dynamics <span className="text-[10px] text-zinc-600 italic hidden sm:inline">In silico</span></h1>
           </div>
           <Link
             href="/syllabus"
