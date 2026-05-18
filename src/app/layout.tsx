@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AND Simulator",
+  title: "Applied Neural Dynamics Labs",
   description: "Using from-scratch simulations to explore everything from single-cell differential equations to population dynamics.",
 };
 
