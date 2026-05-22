@@ -261,7 +261,7 @@ export default function ProbabilityPage() {
     }, [mode, rate]);
 
     return (
-        <div className="h-screen bg-zinc-950 text-zinc-200 flex flex-col overflow-hidden select-none font-sans">
+        <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
 
             {/* MOBILE GUARD - Added here */}
             <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
@@ -281,8 +281,8 @@ export default function ProbabilityPage() {
                 <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
                     <div className="flex items-center gap-4">
                         <Activity className={cn("w-5 h-5", mode === 'coin' ? "text-emerald-500" : "text-purple-500")} />
-                        <h1 className="text-base font-semibold tracking-tight text-white">
-                            <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
+                        <h1 className="text-sm font-bold tracking-tight text-white">
+                            <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
                             <span className="mx-3 text-zinc-700">/</span>
                             <span className="text-zinc-400 font-medium">Neural Stochasticity</span>
                         </h1>
@@ -290,12 +290,12 @@ export default function ProbabilityPage() {
 
                     <div className="flex items-center gap-4">
                         <Select value={mode} onValueChange={(v) => setMode(v as Mode)}>
-                            <SelectTrigger className="w-[180px] h-9 bg-zinc-900 border-zinc-800 text-sm text-zinc-200 font-mono focus:ring-0 focus:outline-none">
+                            <SelectTrigger className="w-[180px] h-8 bg-zinc-900 border-zinc-800 text-xs text-zinc-200 font-mono focus:ring-0 focus:outline-none">
                                 <SelectValue placeholder="Mode" />
                             </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 border-zinc-800">
-                                <SelectItem value="coin" className="text-white hover:bg-zinc-800 cursor-pointer font-mono">Bernoulli (Coin)</SelectItem>
-                                <SelectItem value="poisson" className="text-white hover:bg-zinc-800 cursor-pointer font-mono">Poisson (Spikes)</SelectItem>
+                            <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-200 font-mono text-xs">
+                                <SelectItem value="coin" className="text-white hover:bg-zinc-800 cursor-pointer font-mono text-xs">Bernoulli (Coin)</SelectItem>
+                                <SelectItem value="poisson" className="text-white hover:bg-zinc-800 cursor-pointer font-mono text-xs">Poisson (Spikes)</SelectItem>
                             </SelectContent>
                         </Select>
                         <ConceptDialog title={guideContent.title} subtitle={guideContent.subtitle} sections={guideContent.sections} />

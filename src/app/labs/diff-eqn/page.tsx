@@ -243,7 +243,7 @@ export default function PhasePlanePage() {
     const content = getPhaseContent(mode);
 
     return (
-        <div className="h-screen bg-zinc-950 text-zinc-200 flex flex-col overflow-hidden select-none font-sans">
+        <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
 
             {/* MOBILE GUARD */}
             <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
@@ -264,23 +264,23 @@ export default function PhasePlanePage() {
                 <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
                     <div className="flex items-center gap-4">
                         <Compass className={cn("w-5 h-5", mode === 'spike' ? "text-emerald-500" : "text-blue-500")} />
-                        <h1 className="text-base font-semibold tracking-tight text-white">
-                            <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
+                        <h1 className="text-sm font-bold tracking-tight text-white">
+                            <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
                             <span className="mx-3 text-zinc-700">/</span>
-                            <span className="text-zinc-400 font-medium">Neural Dynamics</span>
+                            <span className="text-zinc-400 font-medium">Membrane Dynamics</span>
                         </h1>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <Select value={mode} onValueChange={(v: Mode) => setMode(v)}>
-                            <SelectTrigger className="w-[180px] h-9 bg-zinc-900 border-zinc-800 text-sm text-zinc-200 font-mono focus:ring-0 outline-none">
+                            <SelectTrigger className="w-[180px] h-8 bg-zinc-900 border-zinc-800 text-xs text-zinc-200 font-mono focus:ring-0 outline-none">
                                 <SelectValue placeholder="Select Lab" />
                             </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-200">
-                                <SelectItem value="leak">The Leak</SelectItem>
-                                <SelectItem value="time-constant">Time Constant (τ)</SelectItem>
-                                <SelectItem value="fixed-points">Fixed Points</SelectItem>
-                                <SelectItem value="spike">Phase Plane</SelectItem>
+                            <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-200 font-mono text-xs">
+                                <SelectItem value="leak" className="text-xs">The Leak</SelectItem>
+                                <SelectItem value="time-constant" className="text-xs">Time Constant (τ)</SelectItem>
+                                <SelectItem value="fixed-points" className="text-xs">Fixed Points</SelectItem>
+                                <SelectItem value="spike" className="text-xs">Phase Plane</SelectItem>
                             </SelectContent>
                         </Select>
                         <ConceptDialog {...content} />

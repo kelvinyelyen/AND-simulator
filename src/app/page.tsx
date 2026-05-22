@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const phases = [
   {
@@ -115,14 +115,13 @@ export default function Home() {
       <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-8 py-5 flex items-center justify-between">
           <div>
-            <h1 className="text-sm font-bold tracking-tight text-white">Applied Neural Dynamics <span className="text-[10px] text-zinc-600 italic hidden sm:inline">In silico</span></h1>
+            <h1 className="text-sm font-bold tracking-tight text-white">Neural Circuit Dynamics <span className="text-[10px] text-zinc-600 italic hidden sm:inline">In silico</span></h1>
           </div>
           <Link
-            href="/syllabus"
-            className="flex items-center gap-2 text-[11px] text-zinc-500 hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-lg border border-zinc-800 hover:border-emerald-500/30 bg-zinc-900/50"
+            href="/overview"
+            className="text-[11px] text-zinc-500 hover:text-emerald-400 transition-colors"
           >
-            <BookOpen className="w-3 h-3" />
-            Syllabus
+            Overview
           </Link>
         </div>
       </header>
@@ -176,6 +175,16 @@ export default function Home() {
           })}
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-zinc-900 mt-24">
+        <div className="max-w-4xl mx-auto px-8 py-8 flex items-center justify-between">
+          <span className="text-[10px] text-zinc-700">NCDL — Neural Circuit Dynamics Lab</span>
+          <Link href="/overview" className="text-[10px] text-zinc-600 hover:text-emerald-400 transition-colors">
+            Overview →
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }

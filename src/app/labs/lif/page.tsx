@@ -124,7 +124,7 @@ export default function LifLab() {
   const isSpiking = latestVoltage >= params.thresh;
 
   return (
-    <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none font-sans">
+    <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
 
       {/* MOBILE GUARD */}
       <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
@@ -145,8 +145,8 @@ export default function LifLab() {
         <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
           <div className="flex items-center gap-4">
             <Activity className="w-5 h-5 text-emerald-500" />
-            <h1 className="text-base font-semibold tracking-tight text-white">
-              <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
+            <h1 className="text-sm font-bold tracking-tight text-white">
+              <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
               <span className="mx-3 text-zinc-700">/</span>
               <span className="text-zinc-400 font-medium">LIF Synthesis</span>
             </h1>
@@ -276,10 +276,10 @@ export default function LifLab() {
                       <span className="text-[10px] font-black uppercase tracking-[0.15em] text-white font-mono">Input Drive</span>
                     </div>
                     <Select value={params.inputMode} onValueChange={(val: InputMode) => setParams({ inputMode: val })}>
-                      <SelectTrigger className="w-28 bg-zinc-950 border-zinc-800 h-6 text-[10px] text-white focus:ring-0 outline-none hover:bg-zinc-900 transition-colors">
+                      <SelectTrigger className="w-28 bg-zinc-950 border-zinc-800 h-6 text-[10px] text-white font-mono focus:ring-0 outline-none hover:bg-zinc-900 transition-colors">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-zinc-900 border-zinc-800 text-white">
+                      <SelectContent className="bg-zinc-900 border-zinc-800 text-white font-mono">
                         <SelectItem value="constant">Constant</SelectItem>
                         <SelectItem value="pulse">Pulse</SelectItem>
                         <SelectItem value="noise">Noise</SelectItem>

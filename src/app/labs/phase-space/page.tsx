@@ -71,7 +71,7 @@ export default function PhaseSpaceLab() {
   const phaseData = history.map(p => ({ v: p.v, w: p.w }));
 
   return (
-    <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none font-sans">
+    <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
       {/* MOBILE GUARD */}
       <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
         <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
@@ -91,8 +91,8 @@ export default function PhaseSpaceLab() {
         <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
           <div className="flex items-center gap-4">
             <Activity className="w-5 h-5 text-emerald-500" />
-            <h1 className="text-base font-semibold tracking-tight text-white">
-              <Link href="/" className="hover:opacity-80 transition-opacity">AND</Link>
+            <h1 className="text-sm font-bold tracking-tight text-white">
+              <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
               <span className="mx-3 text-zinc-700">/</span>
               <span className="text-zinc-400 font-medium">Phase Space Biophysics</span>
             </h1>

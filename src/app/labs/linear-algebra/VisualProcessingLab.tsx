@@ -139,7 +139,7 @@ export const VisualProcessingLab = () => {
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="text-zinc-500 hover:text-white"
+                        className="text-zinc-500 hover:text-zinc-100 hover:bg-zinc-800/60"
                         onClick={clearInputs}
                     >
                         <LayoutGrid className="w-4 h-4 mr-2" />

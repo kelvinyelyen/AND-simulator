@@ -276,7 +276,7 @@ export default function SyllabusPage() {
           <span className="text-zinc-800">|</span>
           <div className="flex items-center gap-2">
             <Activity className="w-4 h-4 text-emerald-500" />
-            <h1 className="text-sm font-bold text-white tracking-tight">Syllabus</h1>
+            <h1 className="text-sm font-bold text-white tracking-tight">Overview</h1>
           </div>
         </div>
       </header>
@@ -377,7 +377,7 @@ export default function SyllabusPage() {
       {/* Footer */}
       <footer className="border-t border-zinc-900 mt-24">
         <div className="max-w-4xl mx-auto px-8 py-8 flex items-center justify-between">
-          <span className="text-[10px] text-zinc-700">AND — Applied Neural Dynamics</span>
+          <span className="text-[10px] text-zinc-700">NCDL — Neural Circuit Dynamics Lab</span>
           <Link href="/" className="text-[10px] text-zinc-600 hover:text-emerald-400 transition-colors">
             ← Back to Labs
           </Link>

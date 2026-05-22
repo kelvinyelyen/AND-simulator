@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Applied Neural Dynamics Labs",
-  description: "Using from-scratch simulations to explore everything from single-cell differential equations to population dynamics.",
+  title: "Neural Circuit Dynamics Lab",
+  description: "Interactive lab exploring neural dynamics from first principles, membrane equations to population circuits.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>
