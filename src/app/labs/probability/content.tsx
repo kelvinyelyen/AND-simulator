@@ -14,7 +14,7 @@ export const getProbabilityContent = (mode: Mode) => {
                         title: "Ion Channels as Coins",
                         color: "emerald",
                         content: (
-                            <div className="space-y-2 text-sm text-zinc-300">
+                            <div className="space-y-2 text-sm text-neutral-300">
                                 <p>
                                     At the microscopic level, biology is noisy. An ion channel isn&apos;t a perfect valve; it&apos;s a probabilistic machine.
                                 </p>
@@ -28,7 +28,7 @@ export const getProbabilityContent = (mode: Mode) => {
                         title: "The Law of Large Numbers",
                         color: "blue",
                         content: (
-                            <div className="text-sm text-zinc-300">
+                            <div className="text-sm text-neutral-300">
                                 <p>
                                     A single channel is unpredictable. But a neuron has <strong>thousands</strong> of channels.
                                 </p>
@@ -49,7 +49,7 @@ export const getProbabilityContent = (mode: Mode) => {
                         title: "Random Arrival Times",
                         color: "purple",
                         content: (
-                            <div className="space-y-2 text-sm text-zinc-300">
+                            <div className="space-y-2 text-sm text-neutral-300">
                                 <p>
                                     Neurons don&apos;t fire like perfect metronomes. Their spike times are often highly irregular.
                                 </p>
@@ -63,7 +63,7 @@ export const getProbabilityContent = (mode: Mode) => {
                         title: "Exponential Intervals",
                         color: "amber",
                         content: (
-                            <div className="text-sm text-zinc-300">
+                            <div className="text-sm text-neutral-300">
                                 <p>
                                     If spike <i>times</i> are random, the waiting time <i>between</i> spikes (ISI) follows an <strong>Exponential Distribution</strong>.
                                 </p>

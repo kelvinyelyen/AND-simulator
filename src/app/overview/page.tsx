@@ -47,7 +47,7 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">The membrane voltage response at the soma is the linear combination of inputs <InlineMath math="x" /> and synaptic weights <InlineMath math="w" />.</p>
+            <p className="text-xs text-neutral-400">The membrane voltage response at the soma is the linear combination of inputs <InlineMath math="x" /> and synaptic weights <InlineMath math="w" />.</p>
             <BlockMath math="y = \sum_{i=1}^{N} w_i x_i = \mathbf{w}^T \mathbf{x}" />
           </div>
         ),
@@ -65,9 +65,9 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">Modeled as an RC circuit. The rate of change of voltage <InlineMath math="V" /> depends on the membrane time constant <InlineMath math="\tau_m = R_m C_m" />.</p>
+            <p className="text-xs text-neutral-400">Modeled as an RC circuit. The rate of change of voltage <InlineMath math="V" /> depends on the membrane time constant <InlineMath math="\tau_m = R_m C_m" />.</p>
             <BlockMath math="\tau_m \frac{dV}{dt} = -(V - E_L) + R_m I_e(t)" />
-            <p className="text-xs text-zinc-500">Where <InlineMath math="E_L" /> is the resting leak potential (usually <InlineMath math="-70\text{mV}" />), and <InlineMath math="I_e" /> is the external current.</p>
+            <p className="text-xs text-neutral-500">Where <InlineMath math="E_L" /> is the resting leak potential (usually <InlineMath math="-70\text{mV}" />), and <InlineMath math="I_e" /> is the external current.</p>
           </div>
         ),
         code: "Use Euler's Method to solve the ODE numerically. Update V at each discrete time step dt: V(t+dt) = V(t) + (dt/τ_m)[−(V(t)−E_L) + R_m·I_e(t)]",
@@ -84,9 +84,9 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">Spike trains are modeled as a Homogeneous Poisson Process. The probability of observing <InlineMath math="k" /> spikes in a time interval is:</p>
+            <p className="text-xs text-neutral-400">Spike trains are modeled as a Homogeneous Poisson Process. The probability of observing <InlineMath math="k" /> spikes in a time interval is:</p>
             <BlockMath math="P(k) = \frac{(\lambda T)^k e^{-\lambda T}}{k!}" />
-            <p className="text-xs text-zinc-500">Where <InlineMath math="\lambda" /> is the mean firing rate.</p>
+            <p className="text-xs text-neutral-500">Where <InlineMath math="\lambda" /> is the mean firing rate.</p>
           </div>
         ),
         code: "Generate Poisson spike trains using random number generators. Compare the Fano Factor (variance/mean) of your generated spikes to real cortical data (which is usually around 1.0).",
@@ -113,7 +113,7 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">We use the ODE from Lab 2, but inject a discontinuous logical rule:</p>
+            <p className="text-xs text-neutral-400">We use the ODE from Lab 2, but inject a discontinuous logical rule:</p>
             <BlockMath math="\text{If } V(t) \ge V_{th}, \text{ then } V(t) \to V_{reset}" />
           </div>
         ),
@@ -131,7 +131,7 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">We reduce the neuron to two variables: Voltage (<InlineMath math="V" />) and a slow recovery variable (<InlineMath math="w" />). We plot the Nullclines (where <InlineMath math="\frac{dV}{dt} = 0" /> and <InlineMath math="\frac{dw}{dt} = 0" />).</p>
+            <p className="text-xs text-neutral-400">We reduce the neuron to two variables: Voltage (<InlineMath math="V" />) and a slow recovery variable (<InlineMath math="w" />). We plot the Nullclines (where <InlineMath math="\frac{dV}{dt} = 0" /> and <InlineMath math="\frac{dw}{dt} = 0" />).</p>
           </div>
         ),
         code: "Plot V on the X-axis and w on the Y-axis. Calculate the vector field using np.meshgrid. You will visually identify the \u201cFixed Points\u201d (resting state) and the \u201cLimit Cycle\u201d (continuous spiking trajectory).",
@@ -148,11 +148,11 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">The membrane acts as a parallel circuit with variable conductances (<InlineMath math="g" />).</p>
+            <p className="text-xs text-neutral-400">The membrane acts as a parallel circuit with variable conductances (<InlineMath math="g" />).</p>
             <BlockMath math="C_m \frac{dV}{dt} = I_e - I_{Na} - I_K - I_L" />
             <BlockMath math="I_{Na} = g_{Na}m^3h(V - E_{Na})" />
             <BlockMath math="I_K = g_K n^4(V - E_K)" />
-            <p className="text-xs text-zinc-500">Where <InlineMath math="m, h, n" /> are gating variables (probabilities between 0 and 1) governed by their own differential equations.</p>
+            <p className="text-xs text-neutral-500">Where <InlineMath math="m, h, n" /> are gating variables (probabilities between 0 and 1) governed by their own differential equations.</p>
           </div>
         ),
         code: "This requires solving a system of four coupled non-linear ODEs simultaneously.",
@@ -179,7 +179,7 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">Modeled using an &quot;Alpha Function&quot; to simulate the rise and exponential decay of synaptic conductance (<InlineMath math="g_{syn}" />).</p>
+            <p className="text-xs text-neutral-400">Modeled using an &quot;Alpha Function&quot; to simulate the rise and exponential decay of synaptic conductance (<InlineMath math="g_{syn}" />).</p>
             <BlockMath math="g_{syn}(t) = \bar{g}_{syn} \frac{t}{\tau_{syn}} e^{1 - \frac{t}{\tau_{syn}}}" />
           </div>
         ),
@@ -197,7 +197,7 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">Weight changes (<InlineMath math="\Delta w" />) are an exponential function of the time difference (<InlineMath math="\Delta t = t_{post} - t_{pre}" />).</p>
+            <p className="text-xs text-neutral-400">Weight changes (<InlineMath math="\Delta w" />) are an exponential function of the time difference (<InlineMath math="\Delta t = t_{post} - t_{pre}" />).</p>
             <BlockMath math="\Delta w = \begin{cases} A_+ e^{-\Delta t / \tau_+} & \text{if } \Delta t > 0 \\ -A_- e^{\Delta t / \tau_-} & \text{if } \Delta t < 0 \end{cases}" />
           </div>
         ),
@@ -225,10 +225,10 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">The Wilson-Cowan equations use Mean-Field Theory to model the firing rates of populations.</p>
+            <p className="text-xs text-neutral-400">The Wilson-Cowan equations use Mean-Field Theory to model the firing rates of populations.</p>
             <BlockMath math="\tau_E \frac{dE}{dt} = -E + f(w_{EE}E - w_{EI}I + I_{ext})" />
             <BlockMath math="\tau_I \frac{dI}{dt} = -I + f(w_{IE}E - w_{II}I)" />
-            <p className="text-xs text-zinc-500">Where <InlineMath math="f(x)" /> is a non-linear sigmoid activation function.</p>
+            <p className="text-xs text-neutral-500">Where <InlineMath math="f(x)" /> is a non-linear sigmoid activation function.</p>
           </div>
         ),
         code: "Build a network of 800 Excitatory and 200 Inhibitory LIF neurons. Tune the W_EI and W_IE weights until the entire population shows synchronous, rhythmic bursting.",
@@ -245,7 +245,7 @@ const phases: PhaseData[] = [
         ),
         math: (
           <div className="space-y-2">
-            <p className="text-xs text-zinc-400">Calculating Shannon Entropy (<InlineMath math="H" />) and Mutual Information to quantify how many &quot;bits&quot; of data the spike train contains about the stimulus.</p>
+            <p className="text-xs text-neutral-400">Calculating Shannon Entropy (<InlineMath math="H" />) and Mutual Information to quantify how many &quot;bits&quot; of data the spike train contains about the stimulus.</p>
             <BlockMath math="H(X) = -\sum P(x) \log_2 P(x)" />
           </div>
         ),
@@ -255,27 +255,20 @@ const phases: PhaseData[] = [
   },
 ];
 
-const colorMap: Record<string, { dot: string; text: string; heading: string; border: string; bg: string }> = {
-  emerald: { dot: "bg-emerald-500", text: "text-emerald-500", heading: "text-emerald-400", border: "border-emerald-500/20", bg: "bg-emerald-500/5" },
-  blue: { dot: "bg-blue-500", text: "text-blue-500", heading: "text-blue-400", border: "border-blue-500/20", bg: "bg-blue-500/5" },
-  amber: { dot: "bg-amber-500", text: "text-amber-500", heading: "text-amber-400", border: "border-amber-500/20", bg: "bg-amber-500/5" },
-  rose: { dot: "bg-rose-500", text: "text-rose-500", heading: "text-rose-400", border: "border-rose-500/20", bg: "bg-rose-500/5" },
-};
-
 export default function SyllabusPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-200 font-mono">
+    <div className="min-h-screen bg-neutral-950 text-neutral-200 font-mono">
 
       {/* Header */}
-      <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-xl sticky top-0 z-50">
+      <header className="border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-8 py-4 flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-neutral-500 hover:text-white transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span className="text-xs">Labs</span>
           </Link>
-          <span className="text-zinc-800">|</span>
+          <span className="text-neutral-800">|</span>
           <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-emerald-500" />
+            <Activity className="w-4 h-4 text-teal-500" />
             <h1 className="text-sm font-bold text-white tracking-tight">Overview</h1>
           </div>
         </div>
@@ -285,7 +278,7 @@ export default function SyllabusPage() {
 
         {/* Intro */}
         <div className="mb-20">
-          <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
+          <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl">
             The brain is a dynamic, physical system computing over time. This syllabus bridges descriptive neuroscience and high-level artificial intelligence by constructing the biological engine from the ground up — moving from physics, to single-cell logic, to network emergence.
           </p>
         </div>
@@ -293,64 +286,63 @@ export default function SyllabusPage() {
         {/* Phases */}
         <div className="space-y-24">
           {phases.map((phase) => {
-            const c = colorMap[phase.color];
             return (
               <section key={phase.id}>
                 {/* Phase Header */}
                 <div className="mb-10">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-2 h-2 rounded-full ${c.dot}`} />
-                    <span className={`text-[10px] font-black uppercase tracking-[0.25em] ${c.text}`}>
+                    <div className="w-2 h-2 rounded-full bg-teal-500/80" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-neutral-500">
                       {phase.label}
                     </span>
                   </div>
                   <h2 className="text-xl font-bold text-white tracking-tight">{phase.title}</h2>
-                  <p className="text-xs text-zinc-500 mt-1 italic">{phase.subtitle}</p>
-                  <p className="text-sm text-zinc-500 mt-3 leading-relaxed max-w-xl">{phase.description}</p>
+                  <p className="text-xs text-neutral-500 mt-1 italic">{phase.subtitle}</p>
+                  <p className="text-sm text-neutral-500 mt-3 leading-relaxed max-w-xl">{phase.description}</p>
                 </div>
 
                 {/* Labs */}
                 <div className="space-y-12">
                   {phase.labs.map((lab) => (
-                    <article key={lab.num} className={`rounded-xl border ${c.border} overflow-hidden`}>
+                    <article key={lab.num} className="rounded-xl border border-teal-500/20 overflow-hidden">
                       {/* Lab Header */}
-                      <div className={`px-6 py-4 ${c.bg} border-b ${c.border} flex items-center justify-between`}>
+                      <div className="px-6 py-4 bg-teal-500/5 border-b border-teal-500/20 flex items-center justify-between">
                         <div className="flex items-baseline gap-3">
-                          <span className={`text-[11px] font-black tabular-nums ${c.text} opacity-60`}>
+                          <span className="text-[11px] font-black tabular-nums text-neutral-500 opacity-60">
                             {String(lab.num).padStart(2, '0')}
                           </span>
                           <h3 className="text-sm font-bold text-white tracking-tight">{lab.title}</h3>
                         </div>
-                        <Link href={lab.slug} className={`text-[10px] font-bold uppercase tracking-widest ${c.text} hover:text-white transition-colors`}>
+                        <Link href={lab.slug} className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-teal-400 transition-colors">
                           Open Lab →
                         </Link>
                       </div>
 
-                      <div className="px-6 py-5 space-y-5 bg-zinc-950/50">
+                      <div className="px-6 py-5 space-y-5 bg-neutral-950/50">
                         {/* Concept */}
                         <div className="flex gap-3">
-                          <Lightbulb className="w-3.5 h-3.5 text-zinc-700 mt-0.5 shrink-0" />
+                          <Lightbulb className="w-3.5 h-3.5 text-neutral-700 mt-0.5 shrink-0" />
                           <div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 block mb-1">The Concept</span>
-                            <p className="text-xs text-zinc-400 leading-relaxed">{lab.concept}</p>
+                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 block mb-1">The Concept</span>
+                            <p className="text-xs text-neutral-400 leading-relaxed">{lab.concept}</p>
                           </div>
                         </div>
 
                         {/* Analogy */}
                         <div className="flex gap-3">
-                          <FlaskConical className="w-3.5 h-3.5 text-zinc-700 mt-0.5 shrink-0" />
+                          <FlaskConical className="w-3.5 h-3.5 text-neutral-700 mt-0.5 shrink-0" />
                           <div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 block mb-1">The Analogy</span>
-                            <p className="text-xs text-zinc-400 leading-relaxed italic">{lab.analogy}</p>
+                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 block mb-1">The Analogy</span>
+                            <p className="text-xs text-neutral-400 leading-relaxed italic">{lab.analogy}</p>
                           </div>
                         </div>
 
                         {/* Math */}
                         <div className="flex gap-3">
-                          <span className="text-zinc-700 mt-0.5 shrink-0 text-xs font-bold">∫</span>
+                          <span className="text-neutral-700 mt-0.5 shrink-0 text-xs font-bold">∫</span>
                           <div className="min-w-0 flex-1">
-                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 block mb-2">The Math</span>
-                            <div className="bg-black/30 rounded-lg p-4 border border-zinc-800/30 overflow-x-auto">
+                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 block mb-2">The Math</span>
+                            <div className="bg-black/30 rounded-lg p-4 border border-neutral-800/30 overflow-x-auto">
                               {lab.math}
                             </div>
                           </div>
@@ -358,10 +350,10 @@ export default function SyllabusPage() {
 
                         {/* Code */}
                         <div className="flex gap-3">
-                          <Cpu className="w-3.5 h-3.5 text-zinc-700 mt-0.5 shrink-0" />
+                          <Cpu className="w-3.5 h-3.5 text-neutral-700 mt-0.5 shrink-0" />
                           <div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 block mb-1">Implementation</span>
-                            <p className="text-xs text-zinc-500 leading-relaxed">{lab.code}</p>
+                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 block mb-1">Implementation</span>
+                            <p className="text-xs text-neutral-500 leading-relaxed">{lab.code}</p>
                           </div>
                         </div>
                       </div>
@@ -375,10 +367,10 @@ export default function SyllabusPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-900 mt-24">
+      <footer className="border-t border-neutral-900 mt-24">
         <div className="max-w-4xl mx-auto px-8 py-8 flex items-center justify-between">
-          <span className="text-[10px] text-zinc-700">NCDL — Neural Circuit Dynamics Lab</span>
-          <Link href="/" className="text-[10px] text-zinc-600 hover:text-emerald-400 transition-colors">
+          <span className="text-[10px] text-neutral-700">NCDL — Neural Circuit Dynamics Lab</span>
+          <Link href="/" className="text-[10px] text-neutral-600 hover:text-teal-400 transition-colors">
             ← Back to Labs
           </Link>
         </div>

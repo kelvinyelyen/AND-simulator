@@ -100,26 +100,19 @@ const phases = [
   },
 ];
 
-const colorMap: Record<string, { dot: string; num: string; border: string }> = {
-  emerald: { dot: "bg-emerald-500", num: "text-emerald-600", border: "border-emerald-500/10" },
-  blue: { dot: "bg-blue-500", num: "text-blue-600", border: "border-blue-500/10" },
-  amber: { dot: "bg-amber-500", num: "text-amber-600", border: "border-amber-500/10" },
-  rose: { dot: "bg-rose-500", num: "text-rose-600", border: "border-rose-500/10" },
-};
-
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-mono">
+    <div className="min-h-screen bg-neutral-950 text-neutral-200 font-mono">
 
       {/* Header */}
-      <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-xl sticky top-0 z-50">
+      <header className="border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-8 py-5 flex items-center justify-between">
           <div>
-            <h1 className="text-sm font-bold tracking-tight text-white">Neural Circuit Dynamics <span className="text-[10px] text-zinc-600 italic hidden sm:inline">In silico</span></h1>
+            <h1 className="text-sm font-bold tracking-tight text-white">Neural Circuit Dynamics <span className="text-[10px] text-neutral-500 italic hidden sm:inline">In silico</span></h1>
           </div>
           <Link
             href="/overview"
-            className="text-[11px] text-zinc-500 hover:text-emerald-400 transition-colors"
+            className="text-[11px] text-neutral-500 hover:text-teal-400 transition-colors"
           >
             Overview
           </Link>
@@ -130,42 +123,41 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-8 py-16">
         <div className="space-y-16">
           {phases.map((phase) => {
-            const colors = colorMap[phase.color];
             return (
               <section key={phase.id}>
                 {/* Phase Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
-                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${colors.num}`}>
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500/80" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-500">
                     {phase.label}
                   </span>
-                  <span className="text-[10px] text-zinc-700 uppercase tracking-wider">—</span>
-                  <span className="text-xs text-zinc-400 font-medium">{phase.title}</span>
-                  <span className="text-[10px] text-zinc-600 italic hidden sm:inline">({phase.subtitle})</span>
+                  <span className="text-[10px] text-neutral-700 uppercase tracking-wider">—</span>
+                  <span className="text-xs text-neutral-300 font-medium">{phase.title}</span>
+                  <span className="text-[10px] text-neutral-500 italic hidden sm:inline">({phase.subtitle})</span>
                 </div>
 
                 {/* Labs */}
-                <ul className={`space-y-1 border-l ${colors.border} ml-[3px] pl-6`}>
+                <ul className="space-y-1 border-l border-teal-500/20 ml-[3px] pl-6">
                   {phase.labs.map((lab) => (
                     <li key={lab.slug}>
                       <Link
                         href={lab.slug}
-                        className="group flex items-center justify-between py-3 px-4 -mx-4 rounded-lg hover:bg-zinc-900/60 transition-all duration-200"
+                        className="group flex items-center justify-between py-3 px-4 -mx-4 rounded-lg hover:bg-neutral-900/50 transition-all duration-200"
                       >
                         <div className="flex items-baseline gap-3">
-                          <span className={`text-[10px] font-black tabular-nums ${colors.num} opacity-50 group-hover:opacity-100 transition-opacity w-5`}>
+                          <span className="text-[10px] font-black tabular-nums text-neutral-500 opacity-50 group-hover:opacity-100 transition-opacity w-5">
                             {String(lab.num).padStart(2, '0')}
                           </span>
                           <div>
-                            <span className="text-sm font-medium tracking-tight text-zinc-200 group-hover:text-white transition-colors">
+                            <span className="text-sm font-medium tracking-tight text-white group-hover:text-teal-100 transition-colors">
                               {lab.title}
                             </span>
-                            <p className="mt-0.5 text-[11px] text-zinc-600 leading-snug group-hover:text-zinc-500 transition-colors">
+                            <p className="mt-0.5 text-[11px] text-neutral-500 leading-snug group-hover:text-neutral-400 transition-colors">
                               {lab.subtitle}
                             </p>
                           </div>
                         </div>
-                        <ArrowRight className="h-3 w-3 text-zinc-800 group-hover:text-zinc-500 transition-all duration-200 group-hover:translate-x-0.5" />
+                        <ArrowRight className="h-3 w-3 text-neutral-700 group-hover:text-teal-500/70 transition-all duration-200 group-hover:translate-x-0.5" />
                       </Link>
                     </li>
                   ))}
@@ -177,12 +169,12 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-900 mt-24">
+      <footer className="border-t border-neutral-900 mt-24">
         <div className="max-w-4xl mx-auto px-8 py-8 flex items-center justify-between">
-          <span className="text-[10px] text-zinc-700">NCDL — Neural Circuit Dynamics Lab</span>
-          <Link href="/overview" className="text-[10px] text-zinc-600 hover:text-emerald-400 transition-colors">
-            Overview →
-          </Link>
+          <span className="text-[10px] text-neutral-600">NCDL — Neural Circuit Dynamics Lab</span>
+          <a href="https://github.com/kelvinyelyen/neural-circuit-dynamics" target="_blank" rel="noopener noreferrer" className="text-[10px] text-neutral-500 hover:text-teal-400 transition-colors">
+            GitHub ↗
+          </a>
         </div>
       </footer>
     </div>

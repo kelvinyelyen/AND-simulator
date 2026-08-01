@@ -22,6 +22,7 @@ interface WCState {
     maxHistoryPoints: number;
 
     step: () => void;
+    stepMultiple: (steps: number) => void;
 }
 
 const DEFAULT_PARAMS: WilsonCowanParams = {
@@ -78,6 +79,34 @@ export const usePopulationStore = create<WCState>((set, get) => ({
             E: result.E,
             I: result.I,
             currentTime: result.time,
+            history: newHistory,
+        });
+    },
+
+    stepMultiple: (steps: number) => {
+        let { E, I, currentTime, params, history, maxHistoryPoints } = get();
+        
+        let newHistory = [...history];
+
+        for (let i = 0; i < steps; i++) {
+            const result = calculateWCStep(E, I, currentTime, params);
+            E = result.E;
+            I = result.I;
+            currentTime = result.time;
+
+            newHistory.push({
+                time: result.time,
+                E: result.E,
+                I: result.I
+            });
+        }
+
+        newHistory = newHistory.slice(-maxHistoryPoints);
+
+        set({
+            E,
+            I,
+            currentTime,
             history: newHistory,
         });
     },

@@ -73,17 +73,17 @@ export const VisualProcessingLab = () => {
         <main className="flex-1 flex overflow-hidden p-8 gap-8">
             {/* Left Panel: Configuration */}
             <aside className="w-[420px] flex flex-col gap-6 shrink-0 overflow-hidden">
-                <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-2xl space-y-8 flex flex-col shadow-sm h-full overflow-y-auto [&::-webkit-scrollbar]:hidden">
+                <div className="bg-neutral-900/50 border border-neutral-800 p-6 rounded-2xl space-y-8 flex flex-col shadow-sm h-full overflow-y-auto [&::-webkit-scrollbar]:hidden">
 
                     {/* Intro/Formula */}
                     <div className="space-y-4">
                         <div className="flex items-center gap-2">
-                            <FunctionSquare className="w-3.5 h-3.5 text-zinc-600" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">
+                            <FunctionSquare className="w-3.5 h-3.5 text-neutral-600" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 font-mono">
                                 Integration Model
                             </span>
                         </div>
-                        <div className="bg-black/30 rounded-xl p-4 flex items-center justify-center border border-zinc-800/30 text-white min-h-[60px]">
+                        <div className="bg-black/30 rounded-xl p-4 flex items-center justify-center border border-neutral-800/30 text-white min-h-[60px]">
                             <BlockMath>
                                 {"L = \\sum_{i=1}^{25} w_i \\cdot r_i"}
                             </BlockMath>
@@ -91,9 +91,9 @@ export const VisualProcessingLab = () => {
                     </div>
 
                     {/* Weight Presets */}
-                    <div className="space-y-3 pt-4 border-t border-zinc-800/50">
+                    <div className="space-y-3 pt-4 border-t border-neutral-800/50">
                         <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">
+                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 font-mono">
                                 Receptive Field Presets
                             </span>
                         </div>
@@ -105,8 +105,8 @@ export const VisualProcessingLab = () => {
                                     className={cn(
                                         "text-xs h-8 capitalize",
                                         activePreset === preset
-                                            ? "bg-zinc-800 text-white border-zinc-700"
-                                            : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                                            ? "bg-neutral-800 text-white border-neutral-700"
+                                            : "bg-neutral-900 border-neutral-800 text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100"
                                     )}
                                     onClick={() => applyPreset(preset as 'on-center' | 'off-center' | 'vertical' | 'horizontal')}
                                 >
@@ -117,7 +117,7 @@ export const VisualProcessingLab = () => {
                     </div>
 
                     {/* Weight Matrix Editor */}
-                    <div className="pt-4 border-t border-zinc-800/50">
+                    <div className="pt-4 border-t border-neutral-800/50">
                         <WeightMatrix
                             gridSize={GRID_SIZE}
                             weights={weights}
@@ -133,13 +133,13 @@ export const VisualProcessingLab = () => {
             </aside>
 
             {/* Right Panel: Interactive Lab */}
-            <section className="flex-1 min-w-0 bg-zinc-900/30 border border-zinc-800 rounded-2xl overflow-hidden flex flex-col relative shadow-inner">
+            <section className="flex-1 min-w-0 bg-neutral-900/30 border border-neutral-800 rounded-2xl overflow-hidden flex flex-col relative shadow-inner">
 
                 <div className="absolute top-4 right-4 z-10">
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="text-zinc-500 hover:text-zinc-100 hover:bg-zinc-800/60"
+                        className="text-neutral-500 hover:text-neutral-100 hover:bg-neutral-800/60"
                         onClick={clearInputs}
                     >
                         <LayoutGrid className="w-4 h-4 mr-2" />
@@ -160,14 +160,14 @@ export const VisualProcessingLab = () => {
                                 setInputs(newIn);
                             }}
                         />
-                        <div className="flex items-center gap-2 text-zinc-500 text-xs">
+                        <div className="flex items-center gap-2 text-neutral-500 text-xs">
                             <MousePointerClick className="w-3 h-3" />
                             <span>Paint Light Pattern</span>
                         </div>
                     </div>
 
                     {/* Flow Arrow */}
-                    <div className="text-zinc-800 transform rotate-90 md:rotate-0">
+                    <div className="text-neutral-800 transform rotate-90 md:rotate-0">
                         <InlineMath math="\xrightarrow{\quad \cdot \quad}" />
                     </div>
 
@@ -178,8 +178,8 @@ export const VisualProcessingLab = () => {
                             <div className={cn(
                                 "w-32 h-32 rounded-full border-4 flex items-center justify-center transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)]",
                                 dotProduct > 0.5
-                                    ? "bg-emerald-500 border-emerald-400 shadow-[0_0_50px_rgba(16,185,129,0.4)]"
-                                    : "bg-zinc-900 border-zinc-800"
+                                    ? "bg-teal-500 border-teal-400 shadow-[0_0_50px_rgba(16,185,129,0.4)]"
+                                    : "bg-neutral-900 border-neutral-800"
                             )}>
                                 <div className="text-center z-10">
                                     <div className="text-[10px] text-white/60 font-mono uppercase tracking-widest mb-1">
@@ -187,7 +187,7 @@ export const VisualProcessingLab = () => {
                                     </div>
                                     <div className={cn(
                                         "text-3xl font-black font-mono",
-                                        dotProduct > 0 ? "text-white" : "text-zinc-500"
+                                        dotProduct > 0 ? "text-white" : "text-neutral-500"
                                     )}>
                                         {dotProduct.toFixed(2)}
                                     </div>
@@ -201,10 +201,10 @@ export const VisualProcessingLab = () => {
                         </div>
 
                         {/* Comparison Logic Display */}
-                        <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 max-w-[250px] text-center">
-                            <p className="text-xs text-zinc-400 leading-relaxed">
+                        <div className="bg-neutral-950/50 p-4 rounded-xl border border-neutral-800/50 max-w-[250px] text-center">
+                            <p className="text-xs text-neutral-400 leading-relaxed">
                                 The LGN neuron sums the firing rates of all
-                                <span className="text-zinc-200 mx-1">Retinal Neurons</span>.
+                                <span className="text-neutral-200 mx-1">Retinal Neurons</span>.
                             </p>
                         </div>
                     </div>

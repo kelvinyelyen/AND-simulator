@@ -39,8 +39,8 @@ export default function ProbabilityPage() {
                 header: "Bernoulli Process",
                 param: "Probability (p)",
                 formula: `P(X=k) = p^k (1-p)^{1-k}`,
-                color: "text-emerald-400",
-                accent: "bg-emerald-500",
+                color: "text-teal-400",
+                accent: "bg-teal-500",
                 desc: "Simulating independent binary events (Ion Channels).",
                 live: () => {
                     const { heads, total } = stats.coinCounts;
@@ -123,7 +123,7 @@ export default function ProbabilityPage() {
                     if (x < 0) return;
                     ctx.beginPath();
                     ctx.arc(x, 60, 5, 0, Math.PI * 2);
-                    ctx.fillStyle = outcome === 1 ? "#10b981" : "#ef4444";
+                    ctx.fillStyle = outcome === 1 ? "#14b8a6" : "#737373";
                     ctx.fill();
                 });
 
@@ -131,11 +131,11 @@ export default function ProbabilityPage() {
                 const total = history.length || 1;
                 const barW = 100;
 
-                ctx.fillStyle = "#ef4444";
+                ctx.fillStyle = "#737373";
                 const hTails = ((total - heads) / total) * maxH;
                 ctx.fillRect(width * 0.25 - barW / 2, bottomY - hTails, barW, hTails);
 
-                ctx.fillStyle = "#10b981";
+                ctx.fillStyle = "#14b8a6";
                 const hHeads = (heads / total) * maxH;
                 ctx.fillRect(width * 0.75 - barW / 2, bottomY - hHeads, barW, hHeads);
 
@@ -144,7 +144,7 @@ export default function ProbabilityPage() {
                 ctx.fillText(`P(1): ${(heads / total).toFixed(2)}`, width * 0.75 - 25, bottomY + 25);
 
                 const targetY = bottomY - (rate * maxH);
-                ctx.strokeStyle = "#fbbf24";
+                ctx.strokeStyle = "#d4d4d8";
                 ctx.lineWidth = 1;
                 ctx.setLineDash([5, 5]);
                 ctx.beginPath();
@@ -261,41 +261,41 @@ export default function ProbabilityPage() {
     }, [mode, rate]);
 
     return (
-        <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
+        <div className="h-screen bg-neutral-950 text-neutral-200 font-mono flex flex-col overflow-hidden select-none">
 
             {/* MOBILE GUARD - Added here */}
-            <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
-                <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
-                    <Activity className="w-8 h-8 text-emerald-500 animate-pulse" />
+            <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-neutral-950 z-50 fixed inset-0">
+                <div className="w-16 h-16 rounded-full bg-neutral-900 flex items-center justify-center border border-neutral-800">
+                    <Activity className="w-8 h-8 text-teal-500 animate-pulse" />
                 </div>
                 <div>
                     <h1 className="text-xl font-bold text-white mb-2">Scientific Workstation</h1>
-                    <p className="text-zinc-500 text-sm leading-relaxed max-w-xs mx-auto">
-                        Please access this simulation on a <span className="text-zinc-300">Desktop</span> or <span className="text-zinc-300">Tablet</span>.
+                    <p className="text-neutral-500 text-sm leading-relaxed max-w-xs mx-auto">
+                        Please access this simulation on a <span className="text-neutral-300">Desktop</span> or <span className="text-neutral-300">Tablet</span>.
                     </p>
                 </div>
             </div>
 
             {/* DESKTOP CONTENT */}
             <div className="hidden md:flex flex-col h-full">
-                <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
+                <header className="h-14 border-b border-neutral-900 flex items-center justify-between px-6 bg-neutral-950 shrink-0">
                     <div className="flex items-center gap-4">
-                        <Activity className={cn("w-5 h-5", mode === 'coin' ? "text-emerald-500" : "text-purple-500")} />
+                        <Activity className={cn("w-5 h-5", mode === 'coin' ? "text-teal-500" : "text-purple-500")} />
                         <h1 className="text-sm font-bold tracking-tight text-white">
                             <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
-                            <span className="mx-3 text-zinc-700">/</span>
-                            <span className="text-zinc-400 font-medium">Neural Stochasticity</span>
+                            <span className="mx-3 text-neutral-700">/</span>
+                            <span className="text-neutral-400 font-medium">Neural Stochasticity</span>
                         </h1>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <Select value={mode} onValueChange={(v) => setMode(v as Mode)}>
-                            <SelectTrigger className="w-[180px] h-8 bg-zinc-900 border-zinc-800 text-xs text-zinc-200 font-mono focus:ring-0 focus:outline-none">
+                            <SelectTrigger className="w-[180px] h-8 bg-neutral-900 border-neutral-800 text-xs text-neutral-200 font-mono focus:ring-0 focus:outline-none">
                                 <SelectValue placeholder="Mode" />
                             </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-200 font-mono text-xs">
-                                <SelectItem value="coin" className="text-white hover:bg-zinc-800 cursor-pointer font-mono text-xs">Bernoulli (Coin)</SelectItem>
-                                <SelectItem value="poisson" className="text-white hover:bg-zinc-800 cursor-pointer font-mono text-xs">Poisson (Spikes)</SelectItem>
+                            <SelectContent className="bg-neutral-900 border-neutral-800 text-neutral-200 font-mono text-xs">
+                                <SelectItem value="coin" className="text-white hover:bg-neutral-800 cursor-pointer font-mono text-xs">Bernoulli (Coin)</SelectItem>
+                                <SelectItem value="poisson" className="text-white hover:bg-neutral-800 cursor-pointer font-mono text-xs">Poisson (Spikes)</SelectItem>
                             </SelectContent>
                         </Select>
                         <ConceptDialog title={guideContent.title} subtitle={guideContent.subtitle} sections={guideContent.sections} />
@@ -304,42 +304,42 @@ export default function ProbabilityPage() {
 
                 <main className="flex-1 flex overflow-hidden p-8 gap-8">
                     <aside className="w-80 flex flex-col gap-6 shrink-0">
-                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-2xl space-y-8 flex flex-col shadow-sm">
+                        <div className="bg-neutral-900/50 border border-neutral-800 p-6 rounded-2xl space-y-8 flex flex-col shadow-sm">
                             <div className="space-y-4">
                                 <div className="flex justify-between items-center">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-500 font-mono">{labels.param}</label>
+                                    <label className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-500 font-mono">{labels.param}</label>
                                     <span className={cn("text-base font-bold font-mono", labels.color)}>{rate.toFixed(2)}</span>
                                 </div>
                                 <Slider
                                     value={[rate]} min={0.01} max={0.99} step={0.01}
                                     onValueChange={([v]) => setRate(v)}
-                                    className={cn("py-2", mode === 'poisson' ? "[&_[role=slider]]:bg-purple-500" : "[&_[role=slider]]:bg-emerald-500")}
+                                    className={cn("py-2", mode === 'poisson' ? "[&_[role=slider]]:bg-purple-500" : "[&_[role=slider]]:bg-teal-500")}
                                 />
-                                <p className="text-xs text-zinc-500 italic leading-relaxed">{labels.desc}</p>
+                                <p className="text-xs text-neutral-500 italic leading-relaxed">{labels.desc}</p>
                             </div>
 
-                            <div className="pt-6 border-t border-zinc-800/50 space-y-4 text-white">
+                            <div className="pt-6 border-t border-neutral-800/50 space-y-4 text-white">
                                 <div className="flex items-center gap-2">
-                                    <FunctionSquare className="w-3.5 h-3.5 text-zinc-600" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">Model Formula</span>
+                                    <FunctionSquare className="w-3.5 h-3.5 text-neutral-600" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 font-mono">Model Formula</span>
                                 </div>
-                                <div className="bg-black/30 rounded-xl p-4 flex items-center justify-center border border-zinc-800/30 min-h-[100px]">
+                                <div className="bg-black/30 rounded-xl p-4 flex items-center justify-center border border-neutral-800/30 min-h-[100px]">
                                     <BlockMath math={labels.formula} />
                                 </div>
                             </div>
 
-                            <div className="pt-6 border-t border-zinc-800/50 space-y-3">
-                                <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">Telemetry</span>
-                                <div className="text-sm font-bold font-mono text-white bg-zinc-950 p-3 rounded-xl border border-zinc-800 text-center">
+                            <div className="pt-6 border-t border-neutral-800/50 space-y-3">
+                                <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 font-mono">Telemetry</span>
+                                <div className="text-sm font-bold font-mono text-white bg-neutral-950 p-3 rounded-xl border border-neutral-800 text-center">
                                     {labels.live()}
                                 </div>
                             </div>
                         </div>
                     </aside>
 
-                    <section className="flex-1 min-w-0 bg-zinc-900/30 border border-zinc-800 rounded-2xl overflow-hidden flex flex-col relative shadow-inner">
+                    <section className="flex-1 min-w-0 bg-neutral-900/30 border border-neutral-800 rounded-2xl overflow-hidden flex flex-col relative shadow-inner">
                         <div className="flex-1 flex items-center justify-center p-0">
-                            <canvas ref={canvasRef} className="w-full h-full bg-zinc-950 overflow-hidden" />
+                            <canvas ref={canvasRef} className="w-full h-full bg-neutral-950 overflow-hidden" />
                         </div>
                     </section>
                 </main>

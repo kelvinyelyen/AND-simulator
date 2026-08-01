@@ -27,6 +27,7 @@ interface PhaseSpaceState {
     setHoveredTerm: (term: string | null) => void;
 
     step: () => void;
+    stepMultiple: (steps: number) => void;
 }
 
 const DEFAULT_PARAMS: PhaseSpaceParams = {
@@ -87,6 +88,36 @@ export const usePhaseSpaceStore = create<PhaseSpaceState>((set, get) => ({
             currentTime: result.time,
             history: newHistory,
             forces: result.forces,
+        });
+    },
+
+    stepMultiple: (steps: number) => {
+        let { v, w, currentTime, params, history, maxHistoryPoints, forces } = get();
+        
+        let newHistory = [...history];
+
+        for (let i = 0; i < steps; i++) {
+            const result = calculatePhaseSpaceStep(v, w, currentTime, params);
+            v = result.v;
+            w = result.w;
+            currentTime = result.time;
+            forces = result.forces;
+
+            newHistory.push({
+                time: result.time,
+                v: result.v,
+                w: result.w
+            });
+        }
+
+        newHistory = newHistory.slice(-maxHistoryPoints);
+
+        set({
+            v,
+            w,
+            currentTime,
+            history: newHistory,
+            forces,
         });
     },
 }));

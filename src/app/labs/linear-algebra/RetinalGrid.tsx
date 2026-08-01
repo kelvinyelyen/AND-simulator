@@ -18,17 +18,17 @@ export const RetinalGrid: React.FC<RetinalGridProps> = ({ gridSize, firingRates,
 
     return (
         <div className="flex flex-col items-center space-y-4">
-            <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-widest">
+            <h3 className="text-sm font-bold text-neutral-400 uppercase tracking-widest">
                 Retinal Layer (<InlineMath math="\vec{r}" />)
             </h3>
             <div
-                className="grid gap-1 p-2 bg-zinc-900 border border-zinc-800 rounded-lg shadow-inner"
+                className="grid gap-1 p-2 bg-neutral-900 border border-neutral-800 rounded-lg shadow-inner"
                 style={{ gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))` }}
             >
                 {firingRates.map((rate, i) => (
                     <div
                         key={i}
-                        className="relative w-12 h-12 sm:w-16 sm:h-16 border border-zinc-700/50 rounded cursor-pointer transition-all hover:z-10 hover:ring-2 hover:ring-zinc-400 group"
+                        className="relative w-12 h-12 sm:w-16 sm:h-16 border border-neutral-700/50 rounded cursor-pointer transition-all hover:z-10 hover:ring-2 hover:ring-neutral-400 group"
                         style={{ backgroundColor: getCellColor(rate) }}
                         onClick={() => {
                             // Cycle: 0 -> 0.1 ... -> 1 -> 0
@@ -40,13 +40,13 @@ export const RetinalGrid: React.FC<RetinalGridProps> = ({ gridSize, firingRates,
                             <span className="text-xs font-mono text-white font-bold">{rate.toFixed(1)}</span>
                         </div>
                         {/* Index label */}
-                        <div className="absolute top-0.5 right-1 text-[8px] text-zinc-500/80 mix-blend-difference font-mono pointer-events-none">
+                        <div className="absolute top-0.5 right-1 text-[8px] text-neutral-500/80 mix-blend-difference font-mono pointer-events-none">
                             {i}
                         </div>
                     </div>
                 ))}
             </div>
-            <p className="text-[10px] text-zinc-500 text-center max-w-[200px]">
+            <p className="text-[10px] text-neutral-500 text-center max-w-[200px]">
                 Click cells to cycle firing rates.<br />
                 Brighter = Higher Firing Rate.
             </p>

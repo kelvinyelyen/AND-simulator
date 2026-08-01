@@ -25,17 +25,17 @@ export default function LinearAlgebraPage() {
     const content = getLinearContent(mode);
 
     return (
-        <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
+        <div className="h-screen bg-neutral-950 text-neutral-200 font-mono flex flex-col overflow-hidden select-none">
 
             {/* MOBILE GUARD */}
-            <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
-                <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
-                    <Activity className="w-8 h-8 text-emerald-500 animate-pulse" />
+            <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-neutral-950 z-50 fixed inset-0">
+                <div className="w-16 h-16 rounded-full bg-neutral-900 flex items-center justify-center border border-neutral-800">
+                    <Activity className="w-8 h-8 text-teal-500 animate-pulse" />
                 </div>
                 <div>
                     <h1 className="text-xl font-bold text-white mb-2">Scientific Workstation</h1>
-                    <p className="text-zinc-500 text-sm leading-relaxed max-w-xs mx-auto">
-                        Please access this simulation on a <span className="text-zinc-300">Desktop</span> or <span className="text-zinc-300">Tablet</span>.
+                    <p className="text-neutral-500 text-sm leading-relaxed max-w-xs mx-auto">
+                        Please access this simulation on a <span className="text-neutral-300">Desktop</span> or <span className="text-neutral-300">Tablet</span>.
                     </p>
                 </div>
             </div>
@@ -43,13 +43,13 @@ export default function LinearAlgebraPage() {
             {/* DESKTOP CONTENT */}
             <div className="hidden md:flex flex-col h-full">
                 {/* Header */}
-                <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
+                <header className="h-14 border-b border-neutral-900 flex items-center justify-between px-6 bg-neutral-950 shrink-0">
                     <div className="flex items-center gap-4">
-                        <Activity className={cn("w-5 h-5", "text-emerald-500")} />
+                        <Activity className={cn("w-5 h-5", "text-teal-500")} />
                         <h1 className="text-sm font-bold tracking-tight text-white">
                             <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
-                            <span className="mx-3 text-zinc-700">/</span>
-                            <span className="text-zinc-400 font-medium">
+                            <span className="mx-3 text-neutral-700">/</span>
+                            <span className="text-neutral-400 font-medium">
                                 {mode === 'biol' ? 'Visual Processing' : 'Vector Operations'}
                             </span>
                         </h1>
@@ -57,14 +57,14 @@ export default function LinearAlgebraPage() {
 
                     <div className="flex items-center gap-4">
                         <Select value={mode} onValueChange={(v: Mode) => setMode(v)}>
-                            <SelectTrigger className="w-[210px] h-8 bg-zinc-900 border-zinc-800 text-xs text-zinc-200 font-mono focus:ring-0 focus:outline-none">
+                            <SelectTrigger className="w-[210px] h-8 bg-neutral-900 border-neutral-800 text-xs text-neutral-200 font-mono focus:ring-0 focus:outline-none">
                                 <SelectValue placeholder="Context" />
                             </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-200 font-mono text-xs">
-                                <SelectItem value="biol" className="text-white hover:bg-zinc-800 cursor-pointer text-xs">
+                            <SelectContent className="bg-neutral-900 border-neutral-800 text-neutral-200 font-mono text-xs">
+                                <SelectItem value="biol" className="text-white hover:bg-neutral-800 cursor-pointer text-xs">
                                     Neuroscience (Retina → LGN)
                                 </SelectItem>
-                                <SelectItem value="math" className="text-white hover:bg-zinc-800 cursor-pointer text-xs">
+                                <SelectItem value="math" className="text-white hover:bg-neutral-800 cursor-pointer text-xs">
                                     Math (Vectors)
                                 </SelectItem>
                             </SelectContent>

@@ -42,6 +42,7 @@ interface SimulationState {
 
     // Actions
     step: () => void;
+    stepMultiple: (steps: number) => void;
 }
 
 const DEFAULT_PARAMS: LifParams = {
@@ -135,6 +136,35 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
             currentTime: result.time,
             history: newHistory,
             forces: result.forces,
+        });
+    },
+
+    stepMultiple: (steps: number) => {
+        let { voltage, currentTime, params, history, maxHistoryPoints, forces } = get();
+        
+        let newHistory = [...history];
+
+        for (let i = 0; i < steps; i++) {
+            const result = calculateLifStep(voltage, currentTime, params);
+            voltage = result.voltage;
+            currentTime = result.time;
+            forces = result.forces;
+
+            newHistory.push({
+                time: result.time,
+                voltage: result.voltage,
+                spiked: result.spiked,
+                input: result.currentI
+            });
+        }
+
+        newHistory = newHistory.slice(-maxHistoryPoints);
+
+        set({
+            voltage,
+            currentTime,
+            history: newHistory,
+            forces,
         });
     },
 }));

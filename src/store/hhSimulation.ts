@@ -28,6 +28,7 @@ interface HHState {
     maxHistoryPoints: number;
 
     step: () => void;
+    stepMultiple: (steps: number) => void;
 }
 
 const DEFAULT_PARAMS: HHParams = {
@@ -96,6 +97,42 @@ export const useHHStore = create<HHState>((set, get) => ({
             h: result.h,
             n: result.n,
             currentTime: result.time,
+            history: newHistory,
+        });
+    },
+
+    stepMultiple: (steps: number) => {
+        let { V, m, h, n, currentTime, params, history, maxHistoryPoints } = get();
+        
+        let newHistory = [...history];
+
+        for (let i = 0; i < steps; i++) {
+            const result = calculateHHStep(V, m, h, n, currentTime, params);
+            V = result.V;
+            m = result.m;
+            h = result.h;
+            n = result.n;
+            currentTime = result.time;
+
+            newHistory.push({
+                time: result.time,
+                V: result.V,
+                m: result.m,
+                h: result.h,
+                n: result.n,
+                gNa_inst: params.gNa * Math.pow(result.m, 3) * result.h,
+                gK_inst: params.gK * Math.pow(result.n, 4)
+            });
+        }
+
+        newHistory = newHistory.slice(-maxHistoryPoints);
+
+        set({
+            V,
+            m,
+            h,
+            n,
+            currentTime,
             history: newHistory,
         });
     },

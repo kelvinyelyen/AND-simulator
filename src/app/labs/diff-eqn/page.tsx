@@ -129,7 +129,7 @@ export default function PhasePlanePage() {
         ctx.lineWidth = 2.5;
 
         if (mode === 'leak' || mode === 'time-constant') {
-            ctx.strokeStyle = "#10b981";
+            ctx.strokeStyle = "#14b8a6";
             ctx.setLineDash([5, 5]);
             ctx.beginPath();
             const xTarget = toCanvas(paramI, 0).x;
@@ -139,7 +139,7 @@ export default function PhasePlanePage() {
             ctx.setLineDash([]);
 
             const sink = toCanvas(paramI, 0);
-            ctx.fillStyle = "#10b981";
+            ctx.fillStyle = "#14b8a6";
             ctx.beginPath();
             ctx.arc(sink.x, sink.y, 8, 0, Math.PI * 2);
             ctx.fill();
@@ -149,13 +149,13 @@ export default function PhasePlanePage() {
             ctx.fill();
 
         } else if (mode === 'fixed-points') {
-            ctx.strokeStyle = "#3b82f6";
+            ctx.strokeStyle = "#5eead4";
             ctx.beginPath();
             ctx.moveTo(toCanvas(-6, 0).x, toCanvas(-6, 0).y);
             ctx.lineTo(toCanvas(6, 0).x, toCanvas(6, 0).y);
             ctx.stroke();
         } else if (mode === 'spike') {
-            ctx.strokeStyle = "#10b981";
+            ctx.strokeStyle = "#14b8a6";
             ctx.beginPath();
             for (let v = -4; v <= 4; v += 0.05) {
                 const w = v - (v * v * v) / 3 + paramI;
@@ -165,7 +165,7 @@ export default function PhasePlanePage() {
             }
             ctx.stroke();
 
-            ctx.strokeStyle = "#f59e0b";
+            ctx.strokeStyle = "#a3a3a3";
             ctx.beginPath();
             ctx.moveTo(toCanvas(-4, (-4 + a) / b).x, toCanvas(-4, (-4 + a) / b).y);
             ctx.lineTo(toCanvas(4, (4 + a) / b).x, toCanvas(4, (4 + a) / b).y);
@@ -178,7 +178,7 @@ export default function PhasePlanePage() {
             const { dx, dy } = getDerivatives(start.x, start.y, paramI, mode, tau);
             setLiveState({ x: start.x, y: start.y, dx, dy });
 
-            ctx.strokeStyle = mode === 'spike' ? "#10b981" : "#3b82f6";
+            ctx.strokeStyle = mode === 'spike' ? "#14b8a6" : "#5eead4";
             ctx.lineWidth = 3;
             ctx.setLineDash([6, 4]);
             ctx.beginPath();
@@ -243,17 +243,17 @@ export default function PhasePlanePage() {
     const content = getPhaseContent(mode);
 
     return (
-        <div className="h-screen bg-zinc-950 text-zinc-200 font-mono flex flex-col overflow-hidden select-none">
+        <div className="h-screen bg-neutral-950 text-neutral-200 font-mono flex flex-col overflow-hidden select-none">
 
             {/* MOBILE GUARD */}
-            <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-zinc-950 z-50 fixed inset-0">
-                <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
-                    <Activity className="w-8 h-8 text-emerald-500 animate-pulse" />
+            <div className="flex md:hidden flex-col items-center justify-center h-full p-8 text-center space-y-6 bg-neutral-950 z-50 fixed inset-0">
+                <div className="w-16 h-16 rounded-full bg-neutral-900 flex items-center justify-center border border-neutral-800">
+                    <Activity className="w-8 h-8 text-teal-500 animate-pulse" />
                 </div>
                 <div>
                     <h1 className="text-xl font-bold text-white mb-2">Scientific Workstation</h1>
-                    <p className="text-zinc-500 text-sm leading-relaxed max-w-xs mx-auto">
-                        Please access this simulation on a <span className="text-zinc-300">Desktop</span> or <span className="text-zinc-300">Tablet</span>.
+                    <p className="text-neutral-500 text-sm leading-relaxed max-w-xs mx-auto">
+                        Please access this simulation on a <span className="text-neutral-300">Desktop</span> or <span className="text-neutral-300">Tablet</span>.
                     </p>
                 </div>
             </div>
@@ -261,22 +261,22 @@ export default function PhasePlanePage() {
             {/* DESKTOP CONTENT */}
             <div className="hidden md:flex flex-col h-full">
                 {/* Header */}
-                <header className="h-14 border-b border-zinc-900 flex items-center justify-between px-6 bg-zinc-950 shrink-0">
+                <header className="h-14 border-b border-neutral-900 flex items-center justify-between px-6 bg-neutral-950 shrink-0">
                     <div className="flex items-center gap-4">
-                        <Compass className={cn("w-5 h-5", mode === 'spike' ? "text-emerald-500" : "text-blue-500")} />
+                        <Compass className={cn("w-5 h-5", mode === 'spike' ? "text-teal-500" : "text-teal-500")} />
                         <h1 className="text-sm font-bold tracking-tight text-white">
                             <Link href="/" className="hover:opacity-80 transition-opacity">NCDL</Link>
-                            <span className="mx-3 text-zinc-700">/</span>
-                            <span className="text-zinc-400 font-medium">Membrane Dynamics</span>
+                            <span className="mx-3 text-neutral-700">/</span>
+                            <span className="text-neutral-400 font-medium">Membrane Dynamics</span>
                         </h1>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <Select value={mode} onValueChange={(v: Mode) => setMode(v)}>
-                            <SelectTrigger className="w-[180px] h-8 bg-zinc-900 border-zinc-800 text-xs text-zinc-200 font-mono focus:ring-0 outline-none">
+                            <SelectTrigger className="w-[180px] h-8 bg-neutral-900 border-neutral-800 text-xs text-neutral-200 font-mono focus:ring-0 outline-none">
                                 <SelectValue placeholder="Select Lab" />
                             </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-200 font-mono text-xs">
+                            <SelectContent className="bg-neutral-900 border-neutral-800 text-neutral-200 font-mono text-xs">
                                 <SelectItem value="leak" className="text-xs">The Leak</SelectItem>
                                 <SelectItem value="time-constant" className="text-xs">Time Constant (τ)</SelectItem>
                                 <SelectItem value="fixed-points" className="text-xs">Fixed Points</SelectItem>
@@ -290,7 +290,7 @@ export default function PhasePlanePage() {
                 <main className="flex-1 flex overflow-hidden p-6 gap-6 items-start">
 
                     {/* Sidebar: h-fit, max-h-full, and sticky behavior if needed */}
-                    <aside className="w-80 flex flex-col shrink-0 overflow-hidden bg-zinc-900/50 border border-zinc-800 rounded-2xl shadow-sm h-fit max-h-full">
+                    <aside className="w-80 flex flex-col shrink-0 overflow-hidden bg-neutral-900/50 border border-neutral-800 rounded-2xl shadow-sm h-fit max-h-full">
 
                         <div className="flex flex-col p-6 overflow-y-auto [&::-webkit-scrollbar]:hidden">
 
@@ -298,10 +298,10 @@ export default function PhasePlanePage() {
                             <div className="space-y-6 shrink-0">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-2">
-                                        <FunctionSquare className="w-3.5 h-3.5 text-zinc-600" />
-                                        <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">Governing Equation</span>
+                                        <FunctionSquare className="w-3.5 h-3.5 text-neutral-600" />
+                                        <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 font-mono">Governing Equation</span>
                                     </div>
-                                    <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center justify-center border border-zinc-800/30 min-h-[90px] text-zinc-200">
+                                    <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center justify-center border border-neutral-800/30 min-h-[90px] text-neutral-200">
                                         <BlockMath math={labels.eq} />
                                     </div>
                                 </div>
@@ -311,39 +311,39 @@ export default function PhasePlanePage() {
                             <div className="flex-col space-y-8 py-6">
 
                                 {/* Parameter Section */}
-                                <div className="space-y-4 pt-6 border-t border-zinc-800/50">
+                                <div className="space-y-4 pt-6 border-t border-neutral-800/50">
                                     <div className="space-y-1">
                                         <div>
-                                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-zinc-600 font-mono">System Parameters</span>
+                                            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-neutral-600 font-mono">System Parameters</span>
                                         </div>
-                                        <p className="text-[10px] text-zinc-500 leading-tight">
+                                        <p className="text-[10px] text-neutral-500 leading-tight">
                                             {labels.desc}
                                         </p>
                                     </div>
 
                                     <div className="space-y-6">
                                         {/* Input Current Slider */}
-                                        <div className="space-y-2 p-2 rounded border border-zinc-800/30 bg-zinc-900/30">
-                                            <div className="flex justify-between items-center text-[10px] font-mono text-zinc-400">
+                                        <div className="space-y-2 p-2 rounded border border-neutral-800/30 bg-neutral-900/30">
+                                            <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400">
                                                 <div className="flex items-center gap-2">
-                                                    <Zap className="w-3 h-3 text-amber-500" />
+                                                    <Zap className="w-3 h-3 text-teal-500" />
                                                     <span>{labels.param}</span>
                                                 </div>
-                                                <span className={cn("font-bold", mode === 'spike' ? "text-emerald-400" : "text-blue-400")}>{paramI.toFixed(2)}</span>
+                                                <span className={cn("font-bold", mode === 'spike' ? "text-teal-400" : "text-teal-400")}>{paramI.toFixed(2)}</span>
                                             </div>
                                             <Slider
                                                 value={[paramI]} min={-1.0} max={1.5} step={0.01}
                                                 onValueChange={(val) => setParamI(val[0])}
-                                                className={cn("py-2", mode === 'spike' ? "[&_[role=slider]]:bg-emerald-500" : "[&_[role=slider]]:bg-blue-500")}
+                                                className={cn("py-2", mode === 'spike' ? "[&_[role=slider]]:bg-teal-500" : "[&_[role=slider]]:bg-teal-500")}
                                             />
                                         </div>
 
                                         {/* Time Constant Slider - Only visible in relevant modes */}
                                         {(mode === 'time-constant' || mode === 'leak') && (
-                                            <div className="space-y-2 p-2 rounded border border-zinc-800/30 bg-zinc-900/30 animate-in fade-in slide-in-from-top-2">
-                                                <div className="flex justify-between items-center text-[10px] font-mono text-zinc-400">
+                                            <div className="space-y-2 p-2 rounded border border-neutral-800/30 bg-neutral-900/30 animate-in fade-in slide-in-from-top-2">
+                                                <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400">
                                                     <div className="flex items-center gap-2">
-                                                        <Timer className="w-3 h-3 text-zinc-500" />
+                                                        <Timer className="w-3 h-3 text-neutral-500" />
                                                         <span>Time Constant (τ)</span>
                                                     </div>
                                                     <span className="text-white font-bold">{tau.toFixed(2)}</span>
@@ -362,7 +362,7 @@ export default function PhasePlanePage() {
                     </aside>
 
                     {/* Right Panel needs h-full to fill vertical space since parent is items-start */}
-                    <section className="flex-1 h-full min-w-0 bg-zinc-900/30 border border-zinc-800 rounded-2xl overflow-hidden flex flex-col relative shadow-inner">
+                    <section className="flex-1 h-full min-w-0 bg-neutral-900/30 border border-neutral-800 rounded-2xl overflow-hidden flex flex-col relative shadow-inner">
                         <div className="flex-1 relative cursor-crosshair">
                             <canvas
                                 ref={canvasRef}
@@ -374,22 +374,22 @@ export default function PhasePlanePage() {
                             {/* FLOATING PROBE HUD - Top Right Corner */}
                             <div className="absolute top-4 right-4 pointer-events-none">
                                 <div className={cn(
-                                    "backdrop-blur-md bg-zinc-950/80 border border-zinc-800/50 p-3 rounded-lg shadow-2xl transition-all duration-200",
+                                    "backdrop-blur-md bg-neutral-950/80 border border-neutral-800/50 p-3 rounded-lg shadow-2xl transition-all duration-200",
                                     liveState ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
                                 )}>
-                                    <div className="flex items-center gap-2 mb-2 border-b border-zinc-800/50 pb-2">
-                                        <Anchor className="w-3 h-3 text-emerald-500" />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-mono">Probe</span>
+                                    <div className="flex items-center gap-2 mb-2 border-b border-neutral-800/50 pb-2">
+                                        <Anchor className="w-3 h-3 text-teal-500" />
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 font-mono">Probe</span>
                                     </div>
                                     {liveState && (
                                         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs font-mono">
-                                            <div className="text-zinc-500">x (V):</div>
-                                            <div className="text-zinc-200 text-right">{liveState.x.toFixed(2)}</div>
+                                            <div className="text-neutral-500">x (V):</div>
+                                            <div className="text-neutral-200 text-right">{liveState.x.toFixed(2)}</div>
 
-                                            <div className="text-zinc-500">y (w):</div>
-                                            <div className="text-zinc-200 text-right">{liveState.y.toFixed(2)}</div>
+                                            <div className="text-neutral-500">y (w):</div>
+                                            <div className="text-neutral-200 text-right">{liveState.y.toFixed(2)}</div>
 
-                                            <div className="col-span-2 pt-2 mt-1 border-t border-zinc-800/50 text-center text-zinc-400">
+                                            <div className="col-span-2 pt-2 mt-1 border-t border-neutral-800/50 text-center text-neutral-400">
                                                 <InlineMath math={`\\dot{\\vec{x}} = [${liveState.dx.toFixed(2)}, ${liveState.dy.toFixed(2)}]`} />
                                             </div>
                                         </div>
@@ -397,10 +397,10 @@ export default function PhasePlanePage() {
                                 </div>
                             </div>
 
-                            <div className="absolute bottom-4 right-6 text-xs font-bold text-zinc-600 font-mono pointer-events-none">
+                            <div className="absolute bottom-4 right-6 text-xs font-bold text-neutral-600 font-mono pointer-events-none">
                                 {labels.xAxis} axis
                             </div>
-                            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-zinc-600 font-mono pointer-events-none">
+                            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-neutral-600 font-mono pointer-events-none">
                                 {labels.yAxis} axis
                             </div>
                         </div>

@@ -13,7 +13,7 @@ export const getLinearContent = (mode: Mode) => {
                     title: "Vectors",
                     color: "blue",
                     content: (
-                        <div className="space-y-2 text-sm text-zinc-300">
+                        <div className="space-y-2 text-sm text-neutral-300">
                             <p>
                                 A <strong>vector</strong> is an ordered list of numbers (like <InlineMath math="\vec{x} = [x_1, x_2, \dots]" />) that represents a point or an arrow in space.
                             </p>
@@ -27,12 +27,12 @@ export const getLinearContent = (mode: Mode) => {
                     title: "The Dot Product",
                     color: "emerald",
                     content: (
-                        <div className="space-y-2 text-sm text-zinc-300">
+                        <div className="space-y-2 text-sm text-neutral-300">
                             <p>
                                 The <strong>dot product</strong> measures how much two vectors points in the &quot;same direction&quot;.
                             </p>
                             <BlockMath>{"\\vec{a} \\cdot \\vec{b} = \\sum a_i b_i"}</BlockMath>
-                            <p className="text-xs text-zinc-500 italic">
+                            <p className="text-xs text-neutral-500 italic">
                                 It is fundamental to many operations, from neural networks (similarity) to physics (work) and graphics (lighting).
                             </p>
                         </div>
@@ -50,7 +50,7 @@ export const getLinearContent = (mode: Mode) => {
                 title: "The Receptive Field",
                 color: "emerald",
                 content: (
-                    <div className="space-y-2 text-sm text-zinc-300">
+                    <div className="space-y-2 text-sm text-neutral-300">
                         <p>
                             Neurons in the visual system (like the LGN) don&apos;t just &quot;see&quot; light. They look for specific <strong>patterns</strong> in space.
                         </p>
@@ -59,10 +59,10 @@ export const getLinearContent = (mode: Mode) => {
                         </p>
                         <ul className="list-disc list-inside ml-2 space-y-1 mt-2">
                             <li>
-                                <strong className="text-emerald-400">Excitatory (+):</strong> Light here makes the neuron fire.
+                                <strong className="text-teal-400">Excitatory (+):</strong> Light here makes the neuron fire.
                             </li>
                             <li>
-                                <strong className="text-rose-400">Inhibitory (-):</strong> Light here silences the neuron.
+                                <strong className="text-teal-400">Inhibitory (-):</strong> Light here silences the neuron.
                             </li>
                         </ul>
                     </div>
@@ -72,7 +72,7 @@ export const getLinearContent = (mode: Mode) => {
                 title: "Center-Surround Antagonism",
                 color: "amber",
                 content: (
-                    <div className="space-y-2 text-sm text-zinc-300">
+                    <div className="space-y-2 text-sm text-neutral-300">
                         <p>
                             This structure creates a <strong>contrast detector</strong>. It ignores uniform light because the positive center and negative surround cancel each other out (<InlineMath math="\sum \approx 0" />).
                         </p>
@@ -86,12 +86,12 @@ export const getLinearContent = (mode: Mode) => {
                 title: "Mathematical Model",
                 color: "blue",
                 content: (
-                    <div className="space-y-2 text-sm text-zinc-300">
+                    <div className="space-y-2 text-sm text-neutral-300">
                         <p>
                             We model the neuron&apos;s response as a <strong>Dot Product</strong> between the input image (<InlineMath math="\vec{r}" />) and the weight matrix (<InlineMath math="\vec{w}" />).
                         </p>
                         <BlockMath>{"LGN_{response} = \\vec{w} \\cdot \\vec{r} = \\sum w_i r_i"}</BlockMath>
-                        <p className="text-xs text-zinc-500 italic">
+                        <p className="text-xs text-neutral-500 italic">
                             If the input image matches the weight pattern (e.g., center light, surround dark), the dot product is maximized. If they are opposites, it&apos;s minimized.
                         </p>
                     </div>
