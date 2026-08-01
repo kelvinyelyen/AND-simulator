@@ -31,7 +31,6 @@ export default function PhaseSpaceLab() {
     isRunning,
     setIsRunning,
     resetSimulation,
-    step,
     stepMultiple,
     hoveredTerm,
     setHoveredTerm,

@@ -102,7 +102,8 @@ export const useHHStore = create<HHState>((set, get) => ({
     },
 
     stepMultiple: (steps: number) => {
-        let { V, m, h, n, currentTime, params, history, maxHistoryPoints } = get();
+        let { V, m, h, n, currentTime } = get();
+        const { params, history, maxHistoryPoints } = get();
         
         let newHistory = [...history];
 

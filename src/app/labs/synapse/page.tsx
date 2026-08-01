@@ -28,7 +28,6 @@ export default function SynapseLab() {
     isRunning,
     setIsRunning,
     resetSimulation,
-    step,
     stepMultiple,
     triggerPreSpike
   } = useSynapseStore();

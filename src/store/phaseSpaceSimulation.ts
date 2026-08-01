@@ -92,7 +92,8 @@ export const usePhaseSpaceStore = create<PhaseSpaceState>((set, get) => ({
     },
 
     stepMultiple: (steps: number) => {
-        let { v, w, currentTime, params, history, maxHistoryPoints, forces } = get();
+        let { v, w, currentTime, forces } = get();
+        const { params, history, maxHistoryPoints } = get();
         
         let newHistory = [...history];
 

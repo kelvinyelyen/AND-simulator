@@ -84,7 +84,8 @@ export const usePopulationStore = create<WCState>((set, get) => ({
     },
 
     stepMultiple: (steps: number) => {
-        let { E, I, currentTime, params, history, maxHistoryPoints } = get();
+        let { E, I, currentTime } = get();
+        const { params, history, maxHistoryPoints } = get();
         
         let newHistory = [...history];
 

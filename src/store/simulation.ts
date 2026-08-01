@@ -140,7 +140,8 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
     },
 
     stepMultiple: (steps: number) => {
-        let { voltage, currentTime, params, history, maxHistoryPoints, forces } = get();
+        let { voltage, currentTime, forces } = get();
+        const { params, history, maxHistoryPoints } = get();
         
         let newHistory = [...history];
 

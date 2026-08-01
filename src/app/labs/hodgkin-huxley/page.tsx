@@ -27,7 +27,6 @@ export default function HodgkinHuxleyLab() {
     isRunning,
     setIsRunning,
     resetSimulation,
-    step,
     stepMultiple
   } = useHHStore();
 

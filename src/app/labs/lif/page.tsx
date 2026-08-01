@@ -68,7 +68,6 @@ export default function LifLab() {
     isRunning,
     setIsRunning,
     resetSimulation,
-    step,
     stepMultiple,
     hoveredTerm,
     setHoveredTerm

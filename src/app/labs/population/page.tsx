@@ -30,7 +30,6 @@ export default function PopulationLab() {
     isRunning,
     setIsRunning,
     resetSimulation,
-    step,
     stepMultiple,
     E,
     I

@@ -101,17 +101,16 @@ export const useSynapseStore = create<SynapseState>((set, get) => ({
     },
 
     stepMultiple: (steps: number) => {
-        let { V, g_syn, currentTime, params, history, maxHistoryPoints } = get();
+        let { V, g_syn, currentTime } = get();
+        const { params, history, maxHistoryPoints } = get();
         
         let newHistory = [...history];
-        let spiked = false;
 
         for (let i = 0; i < steps; i++) {
             const result = calculateSynapseStep(V, g_syn, currentTime, params);
             V = result.V;
             g_syn = result.g_syn;
             currentTime = result.time;
-            if (result.spiked) spiked = true;
 
             newHistory.push({
                 time: result.time,

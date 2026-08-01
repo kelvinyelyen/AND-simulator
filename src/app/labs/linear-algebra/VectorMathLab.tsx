@@ -93,7 +93,7 @@ export const VectorMathLab = () => {
                             {inputs.map((val, i) => (
                                 <div key={i} className="flex justify-between items-center text-xs font-mono bg-neutral-950/50 p-2 rounded border border-neutral-800/50 gap-3">
                                     <span className="text-neutral-400 w-6 shrink-0">
-                                        {useMemo(() => <InlineMath math={`x_${i}`} />, [i])}
+                                        <InlineMath math={`x_${i}`} />
                                     </span>
 
                                     {/* Mini Bar Visualizer in Sidebar */}
@@ -124,7 +124,7 @@ export const VectorMathLab = () => {
                             {weights.map((w, i) => (
                                 <div key={i} className="flex justify-between items-center text-xs font-mono bg-neutral-950/50 p-2 rounded border border-neutral-800/50 gap-3">
                                     <span className="text-neutral-400 w-6 shrink-0">
-                                        {useMemo(() => <InlineMath math={`w_${i}`} />, [i])}
+                                        <InlineMath math={`w_${i}`} />
                                     </span>
 
                                     <Slider
@@ -185,7 +185,7 @@ export const VectorMathLab = () => {
                                         {/* Simple slider overlay/logic could be added here for inputs too, but keeping it simple as per image which showed weights sliders */}
                                     </div>
                                     <div className="text-[11px] font-mono text-neutral-500 font-bold text-center">
-                                        {useMemo(() => <InlineMath math={`x_{${i}}`} />, [i])}<br />
+                                        <InlineMath math={`x_{${i}}`} /><br />
                                         <span className="text-neutral-400 w-12 inline-block text-center tabular-nums">{inVal.toFixed(2)}</span>
                                     </div>
                                 </div>
